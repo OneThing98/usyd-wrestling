@@ -1,6 +1,6 @@
 # USYD Wrestling
 
-Website for the University of Sydney Wrestling Club. Built to mirror the layout and structure of [Penn State Wrestling](https://gopsusports.com/sports/wrestling).
+Website for the University of Sydney Wrestling.
 
 Current site: [usydwrestling.org](https://usydwrestling.org)
 
