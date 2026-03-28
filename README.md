@@ -63,9 +63,14 @@ Two tier nav matching Penn State's pattern:
 
 ## Content Management
 
-Sanity CMS will be added for non-technical editors to manage rosters, news, schedules, and other content. Schemas are outlined in `sanity/README.md`.
+Sanity CMS powers content editing for rosters, news, schedules, and more.
 
-For now, mock data in `src/lib/mock-data.ts` is used during development.
+- Studio is accessible at `/studio`
+- Sanity schemas are in `src/sanity/schemas/`
+- GROQ queries are in `src/sanity/lib/queries.ts`
+- Data fetching helpers are in `src/sanity/lib/fetch.ts`
+
+Mock data in `src/lib/mock-data.ts` is kept as fallback until Sanity is populated.
 
 ## Status
 
