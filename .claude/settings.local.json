@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f src/components/layout/Navbar.tsx src/components/home/FeaturedWrestler.tsx src/components/home/UpcomingMatch.tsx src/components/home/LatestNews.tsx src/components/home/HeroBanner.tsx src/components/roster/RosterFilter.tsx src/components/schedule/ScheduleFilter.tsx)",
+      "Bash(rm -rf src/app/coaches src/app/about src/app/join)",
+      "Bash(mkdir -p src/app/interest-form src/app/record-book src/components/news src/lib)",
+      "Bash(npx next:*)"
+    ]
+  }
+}
