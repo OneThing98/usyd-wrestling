@@ -1,12 +1,19 @@
-export interface Wrestler {
-  id: string;
+interface SanityDocument {
+  _id?: string;
+  _type?: string;
+  _createdAt?: string;
+  _updatedAt?: string;
+}
+
+export interface Wrestler extends SanityDocument {
+  id?: string;
   name: string;
-  slug: string;
+  slug: string | { current: string };
   weightClass: string;
   year: string;
   hometown: string;
   highSchool: string;
-  photo?: string;
+  photo?: any;
   bio?: string;
   record?: string;
   height?: string;
@@ -17,31 +24,33 @@ export interface Wrestler {
   };
 }
 
-export interface Coach {
-  id: string;
+export interface Coach extends SanityDocument {
+  id?: string;
   name: string;
-  slug: string;
+  slug: string | { current: string };
   title: string;
-  photo?: string;
+  photo?: any;
   bio?: string;
+  order?: number;
 }
 
-export interface SupportStaff {
-  id: string;
+export interface SupportStaff extends SanityDocument {
+  id?: string;
   name: string;
-  slug: string;
+  slug: string | { current: string };
   title: string;
-  photo?: string;
+  photo?: any;
   bio?: string;
+  order?: number;
 }
 
-export interface Match {
-  id: string;
+export interface Match extends SanityDocument {
+  id?: string;
   date: string;
   time?: string;
   season: string;
   opponent: string;
-  opponentLogo?: string;
+  opponentLogo?: any;
   location: string;
   homeAway: "home" | "away" | "neutral";
   result?: "W" | "L" | "D" | null;
@@ -54,33 +63,34 @@ export interface Match {
   };
 }
 
-export interface NewsArticle {
-  id: string;
+export interface NewsArticle extends SanityDocument {
+  id?: string;
   title: string;
-  slug: string;
+  slug: string | { current: string };
   date: string;
   excerpt: string;
-  body?: string;
-  thumbnail?: string;
-  heroImage?: string;
+  body?: any[];
+  thumbnail?: any;
+  heroImage?: any;
   author?: string;
   tags?: string[];
   isFeatured?: boolean;
 }
 
-export interface HeroSlide {
-  id: string;
+export interface HeroSlide extends SanityDocument {
+  id?: string;
   title: string;
   subtitle?: string;
-  image: string;
+  image: any;
   ctaText?: string;
   ctaLink?: string;
+  order?: number;
 }
 
-export interface Camp {
-  id: string;
+export interface Camp extends SanityDocument {
+  id?: string;
   name: string;
-  slug: string;
+  slug: string | { current: string };
   startDate: string;
   endDate: string;
   location: string;
@@ -88,31 +98,39 @@ export interface Camp {
   registrationUrl?: string;
   price?: string;
   ageGroup?: string;
-  photo?: string;
+  photo?: any;
 }
 
-export interface Sponsor {
-  id: string;
+export interface Sponsor extends SanityDocument {
+  id?: string;
   name: string;
-  logo: string;
+  logo: any;
   url?: string;
   tier?: "primary" | "secondary";
 }
 
-export interface Facility {
+export interface Facility extends SanityDocument {
   name: string;
   description: string;
   address?: string;
-  photos?: string[];
+  photos?: any[];
   features?: string[];
   mapUrl?: string;
   capacity?: string;
 }
 
-export interface Season {
+export interface Season extends SanityDocument {
   label: string;
   value: string;
   isCurrent: boolean;
+}
+
+export interface RecordBookEntry extends SanityDocument {
+  category: string;
+  wrestlerName: string;
+  value: string;
+  year?: string;
+  description?: string;
 }
 
 export interface NavItem {
