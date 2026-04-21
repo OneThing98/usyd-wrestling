@@ -133,6 +133,22 @@ export interface RecordBookEntry extends SanityDocument {
   description?: string;
 }
 
+export interface TimetableSession {
+  name: string;
+  time: string;
+  location: string;
+}
+
+export interface TimetableDay {
+  day: string;
+  sessions: TimetableSession[];
+}
+
+export interface Timetable extends SanityDocument {
+  days: TimetableDay[];
+  note?: string;
+}
+
 export interface NavItem {
   label: string;
   href?: string;

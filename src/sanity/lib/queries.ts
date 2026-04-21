@@ -55,3 +55,7 @@ export const SEASONS_QUERY = defineQuery(
 export const RECORD_BOOK_QUERY = defineQuery(
   `*[_type == "recordBookEntry"] | order(category asc, year desc)`
 );
+
+export const TIMETABLE_QUERY = defineQuery(
+  `*[_type == "timetable"][0]`
+);
