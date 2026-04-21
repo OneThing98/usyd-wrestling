@@ -7,7 +7,7 @@ export const siteConfig = {
   universityLogo: "/images/usyd-logo.png",
   socialLinks: {
     twitter: "https://twitter.com/usydwrestling",
-    instagram: "https://instagram.com/usydwrestling",
+    instagram: "https://www.instagram.com/usydwrestling",
     facebook: "https://facebook.com/usydwrestling",
     youtube: "https://youtube.com/@usydwrestling",
   },
@@ -40,14 +40,14 @@ export const sportNavItems: NavItem[] = [
   { label: "Stats", href: "/stats" },
   { label: "News", href: "/news" },
   { label: "Donate", href: "/donate" },
-  { label: "Sign Up", href: "/interest-form" },
+  { label: "Membership", href: "/membership" },
   {
     label: "More",
     children: [
       { label: "Archives", href: "/archives" },
       { label: "Camps", href: "/camps" },
       { label: "Facility", href: "/facility" },
-      { label: "Recruiting Questionnaire", href: "/interest-form" },
+      { label: "Recruiting Questionnaire", href: "/membership" },
     ],
   },
 ];
