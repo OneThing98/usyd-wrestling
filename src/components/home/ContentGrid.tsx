@@ -1,18 +1,29 @@
 import Link from "next/link";
-import { mockNews } from "@/lib/mock-data";
-import { FeaturedNewsCard } from "./FeaturedNewsCard";
+import { FeaturedNewsCard, type FeaturedNewsData } from "./FeaturedNewsCard";
 import { PromoCTA } from "./PromoCTA";
 
-export function ContentGrid() {
-  const featured = mockNews.find((n) => n.isFeatured) || mockNews[0];
-  const otherNews = mockNews.filter((n) => n.id !== featured.id);
+export interface ContentGridNewsItem extends FeaturedNewsData {
+  id: string;
+  thumbnailUrl?: string;
+  isFeatured?: boolean;
+}
+
+interface ContentGridProps {
+  news: ContentGridNewsItem[];
+}
+
+export function ContentGrid({ news }: ContentGridProps) {
+  const featured = news.find((n) => n.isFeatured) ?? news[0];
+  const otherNews = featured ? news.filter((n) => n.id !== featured.id) : [];
 
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <FeaturedNewsCard article={featured} />
-        </div>
+        {featured && (
+          <div className="lg:col-span-2">
+            <FeaturedNewsCard article={featured} />
+          </div>
+        )}
 
         <div className="flex flex-col gap-6">
           <PromoCTA
@@ -35,10 +46,18 @@ export function ContentGrid() {
             href={`/news/${article.slug}`}
             className="group block bg-white dark:bg-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
           >
-            <div className="h-48 bg-primary/20 flex items-center justify-center">
-              <span className="text-primary/20 font-display text-lg uppercase">
-                Thumbnail
-              </span>
+            <div className="relative h-48 bg-primary/20 flex items-center justify-center overflow-hidden">
+              {article.thumbnailUrl ? (
+                <img
+                  src={article.thumbnailUrl}
+                  alt={article.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <span className="text-primary/20 font-display text-lg uppercase">
+                  Thumbnail
+                </span>
+              )}
             </div>
             <div className="p-4">
               <span className="text-xs text-gray-500 font-display uppercase">
@@ -59,9 +78,9 @@ export function ContentGrid() {
         ))}
 
         <PromoCTA
-          title="Sign Up"
-          subtitle="Get the latest updates"
-          href="/interest-form"
+          title="Membership"
+          subtitle="Join the club today"
+          href="/membership"
           variant="primary"
         />
       </div>

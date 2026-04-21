@@ -1,13 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { mockMatches } from "@/lib/mock-data";
 import { seasons } from "@/lib/site-config";
 
-export function ScheduleTable() {
+export interface ScheduleTableMatch {
+  id: string;
+  date: string;
+  time?: string;
+  season: string;
+  opponent: string;
+  opponentLogoUrl?: string;
+  location: string;
+  homeAway: "home" | "away" | "neutral";
+  result?: "W" | "L" | "D" | null;
+  score?: string;
+  links?: {
+    video?: string;
+    stats?: string;
+    recap?: string;
+    tickets?: string;
+  };
+}
+
+interface ScheduleTableProps {
+  matches: ScheduleTableMatch[];
+}
+
+export function ScheduleTable({ matches }: ScheduleTableProps) {
   const [selectedSeason, setSelectedSeason] = useState("2025-26");
 
-  const matches = mockMatches.filter((m) => m.season === selectedSeason);
+  const filtered = matches.filter((m) => m.season === selectedSeason);
 
   return (
     <div>
@@ -58,7 +80,7 @@ export function ScheduleTable() {
             </tr>
           </thead>
           <tbody>
-            {matches.map((match) => (
+            {filtered.map((match) => (
               <tr
                 key={match.id}
                 className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
@@ -75,7 +97,15 @@ export function ScheduleTable() {
                 </td>
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex-shrink-0" />
+                    <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex-shrink-0 overflow-hidden">
+                      {match.opponentLogoUrl && (
+                        <img
+                          src={match.opponentLogoUrl}
+                          alt={match.opponent}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                    </div>
                     <span className="text-sm font-display font-bold">{match.opponent}</span>
                   </div>
                 </td>

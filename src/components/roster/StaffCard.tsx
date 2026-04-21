@@ -1,15 +1,30 @@
 import Link from "next/link";
-import type { Coach, SupportStaff } from "@/types";
+
+export interface StaffCardData {
+  name: string;
+  slug: string;
+  title: string;
+  photoUrl?: string;
+  bio?: string;
+}
 
 interface StaffCardProps {
-  person: Coach | SupportStaff;
+  person: StaffCardData;
 }
 
 export function StaffCard({ person }: StaffCardProps) {
   return (
     <div className="group border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-dark">
-      <div className="h-48 bg-primary/20 flex items-center justify-center">
-        <span className="text-primary/20 font-display text-xl uppercase">Photo</span>
+      <div className="relative h-48 bg-primary/20 flex items-center justify-center overflow-hidden">
+        {person.photoUrl ? (
+          <img
+            src={person.photoUrl}
+            alt={person.name}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-primary/20 font-display text-xl uppercase">Photo</span>
+        )}
       </div>
       <div className="p-4 text-center">
         <Link

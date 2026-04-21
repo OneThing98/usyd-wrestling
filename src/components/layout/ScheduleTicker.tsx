@@ -1,10 +1,20 @@
 "use client";
 
-import { mockMatches } from "@/lib/mock-data";
+export interface ScheduleTickerMatch {
+  id: string;
+  date: string;
+  time?: string;
+  opponent: string;
+  opponentLogoUrl?: string;
+  result?: "W" | "L" | "D" | null;
+  score?: string;
+}
 
-export function ScheduleTicker() {
-  const matches = mockMatches;
+interface ScheduleTickerProps {
+  matches: ScheduleTickerMatch[];
+}
 
+export function ScheduleTicker({ matches }: ScheduleTickerProps) {
   return (
     <div className="bg-dark text-white py-3 border-t border-b border-gray-800 overflow-hidden">
       <div className="container mx-auto px-4 relative">
@@ -32,8 +42,16 @@ export function ScheduleTicker() {
                     })}
                   </span>
 
-                  <div className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center flex-shrink-0">
-                    <span className="text-[8px] text-gray-400">VS</span>
+                  <div className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    {match.opponentLogoUrl ? (
+                      <img
+                        src={match.opponentLogoUrl}
+                        alt={match.opponent}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-[8px] text-gray-400">VS</span>
+                    )}
                   </div>
 
                   <span className="text-sm font-display">{match.opponent}</span>
