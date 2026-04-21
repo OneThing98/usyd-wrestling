@@ -27,6 +27,7 @@ export const seasons: Season[] = [
 ];
 
 export const sportNavItems: NavItem[] = [
+  { label: "Timetable", href: "/timetable" },
   { label: "Schedule", href: "/schedule" },
   {
     label: "Team",

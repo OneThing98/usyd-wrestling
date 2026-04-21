@@ -9,6 +9,7 @@ import sponsor from "./sponsor";
 import facility from "./facility";
 import season from "./season";
 import recordBookEntry from "./recordBookEntry";
+import timetable from "./timetable";
 
 export const schemaTypes = [
   wrestler,
@@ -22,4 +23,5 @@ export const schemaTypes = [
   facility,
   season,
   recordBookEntry,
+  timetable,
 ];

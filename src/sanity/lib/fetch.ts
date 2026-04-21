@@ -14,6 +14,7 @@ import {
   FACILITY_QUERY,
   SEASONS_QUERY,
   RECORD_BOOK_QUERY,
+  TIMETABLE_QUERY,
 } from "./queries";
 import type {
   Wrestler,
@@ -27,6 +28,7 @@ import type {
   Facility,
   Season,
   RecordBookEntry,
+  Timetable,
 } from "@/types";
 
 export async function getWrestlers(): Promise<Wrestler[]> {
@@ -83,4 +85,8 @@ export async function getSeasons(): Promise<Season[]> {
 
 export async function getRecordBook(): Promise<RecordBookEntry[]> {
   return client.fetch(RECORD_BOOK_QUERY);
+}
+
+export async function getTimetable(): Promise<Timetable | null> {
+  return client.fetch(TIMETABLE_QUERY);
 }

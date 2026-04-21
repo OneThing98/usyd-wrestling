@@ -7,6 +7,7 @@ import type {
   HeroSlide,
   Camp,
   Sponsor,
+  TimetableDay,
 } from "@/types";
 
 export const mockWrestlers: Wrestler[] = [
@@ -237,5 +238,53 @@ export const mockSponsors: Sponsor[] = [
     logo: "/images/sponsors/usu.png",
     url: "https://usu.edu.au",
     tier: "secondary",
+  },
+];
+
+export const timetableData: TimetableDay[] = [
+  {
+    day: "Monday",
+    sessions: [
+      { name: "Freestyle Wrestling", time: "7:30PM \u2013 9:30PM", location: "SUSF Dojo" },
+    ],
+  },
+  {
+    day: "Tuesday",
+    sessions: [
+      { name: "Open Mat", time: "7:00AM \u2013 8:30AM", location: "SUSF Dojo" },
+      { name: "Greco Roman", time: "7:30PM \u2013 9:30PM", location: "SUSF Dojo" },
+    ],
+  },
+  {
+    day: "Wednesday",
+    sessions: [
+      { name: "Freestyle Wrestling", time: "7:30PM \u2013 9:30PM", location: "SUSF Dojo" },
+    ],
+  },
+  {
+    day: "Thursday",
+    sessions: [
+      { name: "Strength & Conditioning", time: "8:00PM \u2013 9:30PM", location: "Brydens Boxing" },
+    ],
+  },
+  {
+    day: "Friday",
+    sessions: [
+      { name: "Kids Wrestling", time: "4:30PM \u2013 5:30PM", location: "SUSF Dojo" },
+      { name: "Womens Wrestling", time: "5:30PM \u2013 7:30PM", location: "SUSF Dojo" },
+    ],
+  },
+  {
+    day: "Saturday",
+    sessions: [
+      { name: "Greco Roman", time: "9:00AM \u2013 11:00AM", location: "SUSF Dojo" },
+      { name: "Freestyle Wrestling", time: "5:30PM \u2013 7:30PM", location: "SUSF Dojo" },
+    ],
+  },
+  {
+    day: "Sunday",
+    sessions: [
+      { name: "Competition Team", time: "10:00AM \u2013 12:00PM", location: "SUSF Dojo" },
+    ],
   },
 ];
