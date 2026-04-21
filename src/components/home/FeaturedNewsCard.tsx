@@ -1,21 +1,37 @@
 import Link from "next/link";
-import type { NewsArticle } from "@/types";
+
+export interface FeaturedNewsData {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  heroImageUrl?: string;
+}
 
 interface FeaturedNewsCardProps {
-  article: NewsArticle;
+  article: FeaturedNewsData;
 }
 
 export function FeaturedNewsCard({ article }: FeaturedNewsCardProps) {
   return (
     <Link href={`/news/${article.slug}`} className="block group">
       <div className="relative h-[400px] bg-primary/30 overflow-hidden rounded-lg">
+        {article.heroImageUrl && (
+          <img
+            src={article.heroImageUrl}
+            alt={article.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent z-10" />
 
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-white/10 font-display text-4xl uppercase">
-            Featured Image
-          </span>
-        </div>
+        {!article.heroImageUrl && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white/10 font-display text-4xl uppercase">
+              Featured Image
+            </span>
+          </div>
+        )}
 
         <div className="relative z-20 h-full flex flex-col justify-end p-6">
           <span className="text-secondary text-xs font-display uppercase tracking-wider">

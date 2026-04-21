@@ -1,11 +1,37 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { SponsorBar } from "@/components/common/SponsorBar";
+import { getSponsors } from "@/sanity/lib/fetch";
+import { urlFor } from "@/sanity/lib/image";
+import { mockSponsors } from "@/lib/mock-data";
+import { SponsorBar, type SponsorBarItem } from "@/components/common/SponsorBar";
 
-export function Footer() {
+function resolveLogo(src: unknown): string | undefined {
+  if (!src) return undefined;
+  if (typeof src === "string") return src;
+  return urlFor(src as never).width(192).height(96).url();
+}
+
+export async function Footer() {
+  const sanitySponsors = await getSponsors();
+
+  const sponsors: SponsorBarItem[] =
+    sanitySponsors.length > 0
+      ? sanitySponsors.map((s, i) => ({
+          id: s._id ?? s.id ?? `s-${i}`,
+          name: s.name,
+          logoUrl: resolveLogo(s.logo),
+          url: s.url,
+        }))
+      : mockSponsors.map((s, i) => ({
+          id: s.id ?? `s-${i}`,
+          name: s.name,
+          logoUrl: resolveLogo(s.logo),
+          url: s.url,
+        }));
+
   return (
     <>
-      <SponsorBar />
+      <SponsorBar sponsors={sponsors} />
       <footer className="bg-dark text-white">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -20,13 +46,13 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <Link href="/interest-form" className="hover:text-white transition-colors">
+              <Link href="/membership" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/interest-form" className="hover:text-white transition-colors">
+              <Link href="/membership" className="hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/interest-form" className="hover:text-white transition-colors">
+              <Link href="/membership" className="hover:text-white transition-colors">
                 Accessibility
               </Link>
             </div>

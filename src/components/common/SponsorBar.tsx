@@ -1,6 +1,15 @@
-import { mockSponsors } from "@/lib/mock-data";
+export interface SponsorBarItem {
+  id: string;
+  name: string;
+  logoUrl?: string;
+  url?: string;
+}
 
-export function SponsorBar() {
+interface SponsorBarProps {
+  sponsors: SponsorBarItem[];
+}
+
+export function SponsorBar({ sponsors }: SponsorBarProps) {
   return (
     <div className="py-8 bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4">
@@ -8,7 +17,7 @@ export function SponsorBar() {
           Partners & Sponsors
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8">
-          {mockSponsors.map((sponsor) => (
+          {sponsors.map((sponsor) => (
             <a
               key={sponsor.id}
               href={sponsor.url || "#"}
@@ -16,11 +25,19 @@ export function SponsorBar() {
               rel="noopener noreferrer"
               className="group"
             >
-              <div className="w-24 h-12 bg-gray-300 dark:bg-gray-700 rounded flex items-center justify-center group-hover:bg-gray-400 dark:group-hover:bg-gray-600 transition-colors">
-                <span className="text-[8px] text-gray-500 dark:text-gray-400 font-display uppercase">
-                  {sponsor.name}
-                </span>
-              </div>
+              {sponsor.logoUrl ? (
+                <img
+                  src={sponsor.logoUrl}
+                  alt={sponsor.name}
+                  className="w-24 h-12 object-contain"
+                />
+              ) : (
+                <div className="w-24 h-12 bg-gray-300 dark:bg-gray-700 rounded flex items-center justify-center group-hover:bg-gray-400 dark:group-hover:bg-gray-600 transition-colors">
+                  <span className="text-[8px] text-gray-500 dark:text-gray-400 font-display uppercase">
+                    {sponsor.name}
+                  </span>
+                </div>
+              )}
             </a>
           ))}
         </div>

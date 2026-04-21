@@ -1,16 +1,41 @@
 import Link from "next/link";
-import type { Wrestler } from "@/types";
+
+export interface WrestlerCardData {
+  id: string;
+  name: string;
+  slug: string;
+  weightClass: string;
+  year: string;
+  hometown: string;
+  highSchool?: string;
+  photoUrl?: string;
+  record?: string;
+  height?: string;
+  socialLinks?: {
+    twitter?: string;
+    instagram?: string;
+    nilProfile?: string;
+  };
+}
 
 interface WrestlerCardProps {
-  wrestler: Wrestler;
+  wrestler: WrestlerCardData;
 }
 
 export function WrestlerCard({ wrestler }: WrestlerCardProps) {
   return (
     <div className="group border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-dark">
-      <div className="relative h-64 bg-primary/20 flex items-center justify-center">
-        <span className="text-primary/20 font-display text-2xl uppercase">Photo</span>
-        <div className="absolute bottom-2 left-2 bg-secondary text-dark font-display font-bold text-sm px-3 py-1 rounded">
+      <div className="relative h-64 bg-primary/20 flex items-center justify-center overflow-hidden">
+        {wrestler.photoUrl ? (
+          <img
+            src={wrestler.photoUrl}
+            alt={wrestler.name}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-primary/20 font-display text-2xl uppercase">Photo</span>
+        )}
+        <div className="absolute bottom-2 left-2 bg-secondary text-dark font-display font-bold text-sm px-3 py-1 rounded z-10">
           {wrestler.weightClass}
         </div>
       </div>
