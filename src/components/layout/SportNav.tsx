@@ -13,9 +13,7 @@ export function SportNav() {
     <nav className="bg-primary text-white sticky top-0 z-40 shadow-md">
       <div className="container mx-auto px-4 flex items-center justify-between h-14">
         <Link href="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-            <span className="font-display font-bold text-dark text-xs">W</span>
-          </div>
+          <img src={siteConfig.logo} alt={siteConfig.clubName} className="w-8 h-8" />
           <span className="font-display font-bold text-lg uppercase tracking-wider">
             {siteConfig.clubName.split(" ").pop()}
           </span>
