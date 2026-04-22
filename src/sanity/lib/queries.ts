@@ -12,8 +12,16 @@ export const COACHES_QUERY = defineQuery(
   `*[_type == "coach"] | order(order asc, name asc)`
 );
 
+export const COACH_BY_SLUG_QUERY = defineQuery(
+  `*[_type == "coach" && slug.current == $slug][0]`
+);
+
 export const SUPPORT_STAFF_QUERY = defineQuery(
   `*[_type == "supportStaff"] | order(order asc, name asc)`
+);
+
+export const SUPPORT_STAFF_BY_SLUG_QUERY = defineQuery(
+  `*[_type == "supportStaff" && slug.current == $slug][0]`
 );
 
 export const MATCHES_QUERY = defineQuery(

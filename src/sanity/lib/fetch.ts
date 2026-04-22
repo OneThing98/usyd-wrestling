@@ -3,7 +3,9 @@ import {
   WRESTLERS_QUERY,
   WRESTLER_BY_SLUG_QUERY,
   COACHES_QUERY,
+  COACH_BY_SLUG_QUERY,
   SUPPORT_STAFF_QUERY,
+  SUPPORT_STAFF_BY_SLUG_QUERY,
   MATCHES_QUERY,
   NEWS_QUERY,
   FEATURED_NEWS_QUERY,
@@ -43,8 +45,16 @@ export async function getCoaches(): Promise<Coach[]> {
   return client.fetch(COACHES_QUERY);
 }
 
+export async function getCoachBySlug(slug: string): Promise<Coach | null> {
+  return client.fetch(COACH_BY_SLUG_QUERY, { slug });
+}
+
 export async function getSupportStaff(): Promise<SupportStaff[]> {
   return client.fetch(SUPPORT_STAFF_QUERY);
+}
+
+export async function getSupportStaffBySlug(slug: string): Promise<SupportStaff | null> {
+  return client.fetch(SUPPORT_STAFF_BY_SLUG_QUERY, { slug });
 }
 
 export async function getMatches(season: string): Promise<Match[]> {
