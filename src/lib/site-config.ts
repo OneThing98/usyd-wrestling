@@ -33,7 +33,7 @@ export const sportNavItems: NavItem[] = [
     label: "Team",
     children: [
       { label: "Roster", href: "/roster" },
-      { label: "Coaches", href: "/roster#coaches" },
+      { label: "Coaches", href: "/coaches" },
       { label: "Record Book", href: "/record-book" },
     ],
   },
