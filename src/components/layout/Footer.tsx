@@ -36,9 +36,7 @@ export async function Footer() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
-                <span className="font-display font-bold text-dark text-sm">W</span>
-              </div>
+              <img src={siteConfig.logo} alt={siteConfig.clubName} className="w-10 h-10" />
               <div>
                 <span className="font-display font-bold text-lg">{siteConfig.clubName}</span>
                 <p className="text-xs text-gray-400">{siteConfig.clubFullName}</p>

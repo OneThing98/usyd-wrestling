@@ -3,7 +3,7 @@ import type { NavItem, Season } from "@/types";
 export const siteConfig = {
   clubName: "USYD Wrestling",
   clubFullName: "University of Sydney Wrestling Club",
-  logo: "/images/usyd-wrestling-logo.png",
+  logo: "/images/logo.svg",
   universityLogo: "/images/usyd-logo.png",
   socialLinks: {
     twitter: "https://twitter.com/usydwrestling",

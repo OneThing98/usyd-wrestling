@@ -8,7 +8,7 @@ export function GlobalNav() {
     <nav className="bg-dark text-white text-sm">
       <div className="container mx-auto px-4 flex items-center justify-between h-10">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-secondary rounded-full" />
+          <img src={siteConfig.logo} alt={siteConfig.clubName} className="w-6 h-6" />
           <span className="font-display font-bold text-xs uppercase tracking-wider">
             {siteConfig.clubFullName}
           </span>
