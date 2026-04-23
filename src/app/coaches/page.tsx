@@ -28,7 +28,7 @@ function toStaffData(p: Coach | SupportStaff): StaffCardData {
     name: p.name,
     slug: slugStr(p.slug),
     title: p.title,
-    photoUrl: resolvePhoto(p.photo),
+    photoUrl: resolvePhoto(p.thumbnail) || resolvePhoto(p.photo),
     bio: p.bio,
   };
 }
