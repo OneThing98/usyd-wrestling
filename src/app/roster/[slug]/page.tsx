@@ -75,7 +75,7 @@ function StaffProfile({ person }: { person: Coach | SupportStaff }) {
       {galleryImages.length > 0 && (
         <div className="mt-12">
           <h2 className="text-2xl font-display font-bold text-primary uppercase">
-            Photos
+            Gallery
           </h2>
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryImages.map((url, idx) => (
