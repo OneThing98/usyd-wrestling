@@ -30,6 +30,8 @@ export interface Coach extends SanityDocument {
   slug: string | { current: string };
   title: string;
   photo?: any;
+  thumbnail?: any;
+  gallery?: any[];
   bio?: string;
   order?: number;
 }
@@ -40,6 +42,8 @@ export interface SupportStaff extends SanityDocument {
   slug: string | { current: string };
   title: string;
   photo?: any;
+  thumbnail?: any;
+  gallery?: any[];
   bio?: string;
   order?: number;
 }

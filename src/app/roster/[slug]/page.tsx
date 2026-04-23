@@ -25,6 +25,13 @@ function paragraphs(text: string | undefined): string[] {
 function StaffProfile({ person }: { person: Coach | SupportStaff }) {
   const photoUrl = resolvePhoto(person.photo, 800, 1000);
   const bioParagraphs = paragraphs(person.bio);
+  const galleryImages = (person.gallery ?? [])
+    .map((img) => {
+      if (!img) return null;
+      if (typeof img === "string") return img;
+      return urlFor(img as never).width(800).height(600).url();
+    })
+    .filter((url): url is string => Boolean(url));
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-3xl">
@@ -62,6 +69,31 @@ function StaffProfile({ person }: { person: Coach | SupportStaff }) {
           {bioParagraphs.map((para, idx) => (
             <p key={idx}>{para}</p>
           ))}
+        </div>
+      )}
+
+      {galleryImages.length > 0 && (
+        <div className="mt-12">
+          <h2 className="text-2xl font-display font-bold text-primary uppercase">
+            Photos
+          </h2>
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galleryImages.map((url, idx) => (
+              <a
+                key={idx}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block aspect-[4/3] bg-primary/10 rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src={url}
+                  alt={`${person.name} photo ${idx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </a>
+            ))}
+          </div>
         </div>
       )}
     </div>
